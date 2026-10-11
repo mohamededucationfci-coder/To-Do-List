@@ -1,0 +1,77 @@
+body {
+  background: "#FAFCFF";
+}
+
+/* xs فقط */
+@media (max-width: 899.95px) {
+  .App {
+    padding: 30px 0;
+  }
+}
+
+/* md فقط */
+@media (min-width: 900px) and (max-width: 1199.95px) {
+  .App {
+    padding: 40px 0;
+  }
+}
+
+/* lg فقط */
+@media (min-width: 1200px) {
+  .App {
+    padding: 50px 0;
+  }
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-Light.ttf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-ExtraLight.ttf");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-SemiBold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-ExtraBold.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("../public/Font/Cairo-Black.ttf");
+  font-weight: 900;
+}
