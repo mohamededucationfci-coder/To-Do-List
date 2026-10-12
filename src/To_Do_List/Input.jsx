@@ -6,11 +6,14 @@ import Grid from "@mui/material/Grid";
 
 // Hook
 import { useState, useContext } from "react";
-
+import { ValueSnackBar } from "./Context/ValueSnackBar";
+import { ContentSnackBar } from "./Context/ContentSnackBar";
 import { ListOfToDo } from "./Context/ToDoContext";
 export default function Input() {
   const [valueInput, setValue] = useState("");
   const [valueTasks, setValueToDo] = useContext(ListOfToDo);
+  const [content, setContent] = useContext(ContentSnackBar);
+  const [value, setValueSnackBar] = useContext(ValueSnackBar);
   function handleAddTask() {
     setValueToDo([
       ...valueTasks,
@@ -21,6 +24,11 @@ export default function Input() {
       },
     ]);
     setValue("");
+    setContent("New task added successfully");
+    setValueSnackBar(true);
+    setTimeout(() => {
+      setValueSnackBar(false);
+    }, 2000);
   }
   return (
     <Box>
