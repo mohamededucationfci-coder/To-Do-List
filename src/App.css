@@ -2,6 +2,10 @@ body {
   background: #fafcff;
 }
 
+.active {
+  border: 1px solid !important;
+}
+
 /* xs فقط */
 @media (max-width: 899.95px) {
   .App {

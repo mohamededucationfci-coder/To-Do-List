@@ -3,10 +3,9 @@ import reduceToDoList from "../Reducer/reduceToDoList";
 export const ValueTasks = createContext([]);
 export const Dispatch = createContext();
 export default function ListOfToDoProvider({ children }) {
-  const [value, dispatch] = useReducer(
-    reduceToDoList,
-    JSON.parse(window.localStorage.getItem("Tasks")) || [],
-  );
+  const dataStorage = JSON.parse(window.localStorage.getItem("Tasks")) || [];
+
+  const [value, dispatch] = useReducer(reduceToDoList, dataStorage);
 
   useEffect(() => {
     window.localStorage.setItem("Tasks", JSON.stringify(value));

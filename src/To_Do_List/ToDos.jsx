@@ -1,7 +1,7 @@
 import { Dispatch, ValueTasks } from "./Context/ToDoContext";
 import { useState, useContext, useMemo } from "react";
 import { SetValueSnackBar } from "./Context/ValueSnackBar";
-import {  SetContentSnackBar } from "./Context/ContentSnackBar";
+import { SetContentSnackBar } from "./Context/ContentSnackBar";
 // MUI
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -47,12 +47,13 @@ export default function ToDos() {
   const [appearDialogDelete, setValueAppearDelete] = useState(false);
   const [appearDialogEdit, setValueAppearEdit] = useState(false);
   const [id, setId] = useState();
+  const [active, setActive] = useState(0);
   const [valueForm, setValueForm] = useState("");
-  const  setValueSnackBar = useContext(SetValueSnackBar);
+  const setValueSnackBar = useContext(SetValueSnackBar);
   const setContent = useContext(SetContentSnackBar);
   const compleatStyle = {
     background: "#ECFDF3",
-    border: "1px solid transparent",
+    border: "1px solid rgba(5,150,105,0.14)",
     borderRadius: "10px",
     color: "#059669",
     textTransform: "capitalize",
@@ -87,6 +88,7 @@ export default function ToDos() {
       return !task.isCompleted;
     });
   }, [value]);
+  // function handleSort(){}
 
   function handleDelete(id) {
     dispatch({ type: "delete", payload: { idTask: id } });
@@ -114,12 +116,14 @@ export default function ToDos() {
   } else if (innerButton === "remaining") {
     dataShow = remaining;
   }
+
   const allTasks = dataShow.map((task) => {
     return (
       <Grid
         key={task.id}
         size={12}
         sx={{
+          outline: "none",
           display: "grid",
           background: "#FAFCFF",
           gridTemplateColumns: {
@@ -128,7 +132,7 @@ export default function ToDos() {
           },
           justifyContent: "space-between",
           alignItems: "center",
-          boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.4)",
+          boxShadow: "0px 0px 4px 0 rgba(0,0,0,0.05)",
           border: "1px solid rgba(238, 238, 238, 0.5)",
           borderRadius: "16px",
         }}
@@ -326,9 +330,10 @@ export default function ToDos() {
             }}
           >
             <Button
+              className={active === 0 ? "active" : ""}
               sx={{
                 background: "#EFF8FF",
-                border: "1px solid rgba(46,144,250,0.2)",
+                border: "none",
                 borderRadius: "10px",
                 color: "#2E90FA",
                 textTransform: "capitalize",
@@ -342,11 +347,14 @@ export default function ToDos() {
               value="all"
               onClick={(e) => {
                 setValueButton(e.target.value);
+                setActive(0);
+                console.log(active);
               }}
             >
               all
             </Button>
             <Button
+              className={active === 1 ? "active" : ""}
               sx={{
                 background: "#ECFDF3",
                 border: "1px solid transparent",
@@ -363,11 +371,13 @@ export default function ToDos() {
               value="completed"
               onClick={(e) => {
                 setValueButton(e.target.value);
+                setActive(1);
               }}
             >
               completed
             </Button>
             <Button
+              className={active === 2 ? "active" : ""}
               sx={{
                 background: "#FFF6ED",
                 border: "1px solid transparent",
@@ -384,6 +394,7 @@ export default function ToDos() {
               value="remaining"
               onClick={(e) => {
                 setValueButton(e.target.value);
+                setActive(2);
               }}
             >
               remaining
@@ -392,7 +403,7 @@ export default function ToDos() {
           <Grid
             container
             sx={{
-              padding: "10px 0",
+              padding: "10px 5px",
               maxHeight: "400px",
               overflow: "auto",
               gap: {
