@@ -57,7 +57,8 @@ export default function Head() {
           variant="h1"
           sx={{
             fontSize: {
-              xs: "24px",
+              xs: "28px",
+              md: "32px",
             },
             fontWeight: "bold",
             textTransform: "capitalize",
@@ -69,7 +70,8 @@ export default function Head() {
           variant="body1"
           sx={{
             fontSize: {
-              xs: "13px",
+              xs: "14px",
+              md: "16px",
             },
             color: "#6E7881",
             textTransform: "capitalize",
@@ -100,7 +102,7 @@ export default function Head() {
               borderRadius: "12px",
             }}
           />
-          <Typography sx={{ fontSize: "13px" }}>
+          <Typography sx={{ fontSize: { xs: "13px", md: "14" } }}>
             {nameDay} , {numberDay} {nameMonth}
           </Typography>
         </Box>

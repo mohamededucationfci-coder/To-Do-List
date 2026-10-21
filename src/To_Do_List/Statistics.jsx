@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 // Components
 import StateCard from "./StateCard";
-import { ListOfToDo } from "./Context/ToDoContext";
+import { ValueTasks } from "./Context/ToDoContext";
 
 // MUI
 import Grid from "@mui/material/Grid";
@@ -14,10 +14,10 @@ import RuleIcon from "@mui/icons-material/Rule";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 export default function Statistics() {
-  const [tasks, setTask] = useContext(ListOfToDo);
+  const tasks = useContext(ValueTasks);
   let numberOfCompleteTask = 0;
   let numberOfRemainingTask = 0;
-  const CompleteTask = tasks.forEach((task) => {
+  tasks.forEach((task) => {
     if (task.isCompleted) {
       numberOfCompleteTask++;
     } else {

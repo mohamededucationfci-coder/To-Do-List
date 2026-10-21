@@ -24,23 +24,23 @@ export default function StateCard({
         borderRadius: "16px",
       }}
     >
-      <CardContent sx={{}}>
+      <CardContent>
         <Typography
           variant="h5"
           sx={{
-            fontSize: { xs: "14px" },
-            fontWeight: "700",
-            textTransform: "capitalize",
+            fontSize: { xs: "12px", md: "14px" },
+            fontWeight: "600",
+            textTransform: "uppercase",
           }}
         >
           {title}
         </Typography>
-        <Typography>
-          <Typography>
+        <Typography component="div">
+          <Typography component="div">
             <Typography
               component="span"
               sx={{
-                fontSize: { xs: "20px" },
+                fontSize: { xs: "22px", md: "24px" },
                 fontWeight: "bold",
               }}
             >
@@ -48,7 +48,7 @@ export default function StateCard({
             </Typography>{" "}
             <Typography
               component="span"
-              sx={{ color: "#6E7881", fontSize: { xs: "13px" } }}
+              sx={{ color: "#6E7881", fontSize: { xs: "13px", md: "15px" } }}
             >
               items
             </Typography>

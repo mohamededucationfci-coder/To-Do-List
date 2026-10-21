@@ -1,12 +1,12 @@
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import { ValueSnackBar } from "./Context/ValueSnackBar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ContentSnackBar } from "./Context/ContentSnackBar";
 export default function SnackBar() {
-  const [value, setValue] = useContext(ValueSnackBar);
-  const [content, setContent] = useContext(ContentSnackBar);
-  const [state, setState] = React.useState({
+  const value = useContext(ValueSnackBar);
+  const content = useContext(ContentSnackBar);
+  const [state, setState] = useState({
     vertical: "top",
     horizontal: "center",
   });

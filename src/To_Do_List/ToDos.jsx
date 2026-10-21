@@ -1,7 +1,7 @@
-import { ListOfToDo } from "./Context/ToDoContext";
+import { Dispatch, ValueTasks } from "./Context/ToDoContext";
 import { useState, useContext, useMemo } from "react";
-import { ValueSnackBar } from "./Context/ValueSnackBar";
-import { ContentSnackBar } from "./Context/ContentSnackBar";
+import { SetValueSnackBar } from "./Context/ValueSnackBar";
+import {  SetContentSnackBar } from "./Context/ContentSnackBar";
 // MUI
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -42,13 +42,14 @@ export default function ToDos() {
   const hour = date.getHours();
   const minute = date.getMinutes();
   const [innerButton, setValueButton] = useState("");
-  const [value, setValue] = useContext(ListOfToDo);
+  const value = useContext(ValueTasks);
+  const dispatch = useContext(Dispatch);
   const [appearDialogDelete, setValueAppearDelete] = useState(false);
   const [appearDialogEdit, setValueAppearEdit] = useState(false);
   const [id, setId] = useState();
   const [valueForm, setValueForm] = useState("");
-  const [valueSnackBar, setValueSnackBar] = useContext(ValueSnackBar);
-  const [content, setContent] = useContext(ContentSnackBar);
+  const  setValueSnackBar = useContext(SetValueSnackBar);
+  const setContent = useContext(SetContentSnackBar);
   const compleatStyle = {
     background: "#ECFDF3",
     border: "1px solid transparent",
@@ -56,7 +57,8 @@ export default function ToDos() {
     color: "#059669",
     textTransform: "capitalize",
     fontSize: {
-      xs: "15px",
+      xs: "12px",
+      md: "14px",
     },
     fontWeight: "600",
   };
@@ -67,14 +69,15 @@ export default function ToDos() {
     borderRadius: "12px",
     textTransform: "capitalize",
     fontSize: {
-      xs: "13px",
+      xs: "12px",
+      md: "14px",
     },
+    fontWeight: "600",
   };
 
   //Filter Tasks
   const completed = useMemo(() => {
     return value.filter((task) => {
-      console.log("dkj");
       return task.isCompleted;
     });
   }, [value]);
@@ -86,36 +89,15 @@ export default function ToDos() {
   }, [value]);
 
   function handleDelete(id) {
-    const newValue = value.filter((task) => {
-      return task.id !== id;
-    });
-    setValue(newValue);
+    dispatch({ type: "delete", payload: { idTask: id } });
   }
 
   function handleState(id) {
-    const newValue = value.map((task) => {
-      if (task.id === id) {
-        if (task.isCompleted) {
-          return { ...task, isCompleted: false };
-        } else {
-          return { ...task, isCompleted: true };
-        }
-      } else {
-        return task;
-      }
-    });
-    setValue(newValue);
+    dispatch({ type: "changeState", payload: { idTask: id } });
   }
 
   function handleUpdateTasks(id) {
-    const newTasks = value.map((task) => {
-      if (task.id === id) {
-        return { ...task, title: valueForm };
-      } else {
-        return task;
-      }
-    });
-    setValue(newTasks);
+    dispatch({ type: "update", payload: { idTask: id, titleTask: valueForm } });
   }
 
   function appearDialogDel() {
@@ -161,8 +143,10 @@ export default function ToDos() {
         >
           <Typography
             sx={{
+              textTransform: "capitalize",
               fontSize: {
-                xs: "15px",
+                xs: "16px",
+                md: "18px",
               },
               fontWeight: "600",
             }}
@@ -179,8 +163,10 @@ export default function ToDos() {
               gap: 0.5,
               fontSize: {
                 xs: "12px",
+                md: "13px",
               },
               textTransform: "capitalize",
+              color: "#6E7881",
             }}
           >
             <QueryBuilderIcon
@@ -223,7 +209,8 @@ export default function ToDos() {
               color: "#2E90FA",
               textTransform: "capitalize",
               fontSize: {
-                xs: "13px",
+                xs: "12px",
+                md: "14px",
               },
               fontWeight: "600",
             }}
@@ -243,6 +230,11 @@ export default function ToDos() {
               borderRadius: "10px",
               color: "#DC2626",
               textTransform: "capitalize",
+              fontWeight: "600",
+              fontSize: {
+                xs: "12px",
+                md: "14px",
+              },
             }}
             variant="outlined"
             startIcon={<DeleteIcon />}
@@ -275,9 +267,10 @@ export default function ToDos() {
               sx={{
                 textTransform: "capitalize",
                 fontSize: {
-                  xs: "18px",
+                  xs: "22px",
+                  md: "24px",
                 },
-                fontWeight: "500",
+                fontWeight: "600",
               }}
             >
               my tasks
@@ -289,7 +282,8 @@ export default function ToDos() {
               sx={{
                 textTransform: "capitalize",
                 fontSize: {
-                  xs: "12px",
+                  xs: "14px",
+                  md: "16px",
                 },
                 color: "#3E4850",
               }}
@@ -339,7 +333,8 @@ export default function ToDos() {
                 color: "#2E90FA",
                 textTransform: "capitalize",
                 fontSize: {
-                  xs: "15px",
+                  xs: "14px",
+                  md: "16px",
                 },
                 fontWeight: "600",
               }}
@@ -359,7 +354,8 @@ export default function ToDos() {
                 color: "#059669",
                 textTransform: "capitalize",
                 fontSize: {
-                  xs: "15px",
+                  xs: "14px",
+                  md: "16px",
                 },
                 fontWeight: "600",
               }}
@@ -379,7 +375,8 @@ export default function ToDos() {
                 color: "#D97706",
                 textTransform: "capitalize",
                 fontSize: {
-                  xs: "15px",
+                  xs: "14px",
+                  md: "16px",
                 },
                 fontWeight: "600",
               }}

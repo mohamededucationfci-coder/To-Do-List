@@ -1,5 +1,5 @@
 body {
-  background: "#FAFCFF";
+  background: #fafcff;
 }
 
 /* xs فقط */
@@ -24,54 +24,47 @@ body {
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-Light.ttf");
-  font-weight: 200;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-ExtraLight.ttf");
+  font-family: "Plus Jakarta Sans";
+  src: url("../public/Font/PlusJakartaSans-ExtraLight.ttf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-Light.ttf");
+  font-family: "Plus Jakarta Sans";
+  src: url("../public/Font/PlusJakartaSans-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-Regular.ttf");
+  font-family: "Plus Jakarta Sans";
+  src: url("../public/Font/PlusJakartaSans-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-Medium.ttf");
+  font-family: "Plus Jakarta Sans";
+  src: url("../public/Font/PlusJakartaSans-Medium.ttf");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-SemiBold.ttf");
+  font-family: "Plus Jakarta Sans";
+  src: url("../public/Font/PlusJakartaSans-SemiBold.ttf");
   font-weight: 600;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-Bold.ttf");
+  font-family: "Plus Jakarta Sans";
+  src: url("../public/Font/PlusJakartaSans-Bold.ttf");
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-ExtraBold.ttf");
+  font-family: "Plus Jakarta Sans";
+  src: url("../public/Font/PlusJakartaSans-ExtraBold.ttf");
   font-weight: 800;
-}
-
-@font-face {
-  font-family: "Cairo";
-  src: url("../public/Font/Cairo-Black.ttf");
-  font-weight: 900;
+  font-display: swap;
 }

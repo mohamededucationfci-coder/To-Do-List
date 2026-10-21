@@ -8,8 +8,6 @@ import ToDos from "./ToDos";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
-//Hook
-
 export default function ToDoList() {
   return (
     <>
