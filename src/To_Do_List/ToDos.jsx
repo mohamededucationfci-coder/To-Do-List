@@ -124,17 +124,17 @@ export default function ToDos() {
         size={12}
         sx={{
           outline: "none",
-          display: "grid",
           background: "#FAFCFF",
+          boxShadow: "0px 0px 4px 0 rgba(0,0,0,0.05)",
+          border: "1px solid rgba(238, 238, 238, 0.5)",
+          borderRadius: "16px",
+          display: "grid",
           gridTemplateColumns: {
             xs: "1fr",
             sm: "repeat(2,auto)",
           },
           justifyContent: "space-between",
           alignItems: "center",
-          boxShadow: "0px 0px 4px 0 rgba(0,0,0,0.05)",
-          border: "1px solid rgba(238, 238, 238, 0.5)",
-          borderRadius: "16px",
         }}
       >
         <CardContent
@@ -415,7 +415,38 @@ export default function ToDos() {
               placeItems: "center",
             }}
           >
-            {value.length > 0 ? allTasks : "No tasks have been added yet."}
+            {dataShow.length > 0 ? (
+              allTasks
+            ) : (
+              <Typography
+                component="div"
+                sx={{
+                  height: "60px",
+                  outline: "none",
+                  background: "#FAFCFF",
+                  boxShadow: "0px 0px 4px 0 rgba(195, 23, 23, 0.05)",
+                  border: "1px solid rgba(238, 238, 238, 0.5)",
+                  borderRadius: "16px",
+                  width: {
+                    xs: "100%",
+                    md: "90%",
+                  },
+                  display: "grid",
+                  placeItems: "center",
+                }}
+              >
+                {" "}
+                <Typography
+                  sx={{
+                    fontSize: {
+                      md: "18px",
+                    },
+                  }}
+                >
+                  No tasks have been added yet.
+                </Typography>
+              </Typography>
+            )}
           </Grid>
         </Grid>
       </Box>
